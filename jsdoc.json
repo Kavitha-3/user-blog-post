@@ -1,0 +1,48 @@
+{
+            "tags": {
+                "allowUnknownTags": ["category","subcategory"]
+            },
+            "source": {
+                "include": ["."],
+                "includePattern": ".js$",
+                "excludePattern": "(node_modules/|docs)"
+            },
+            "plugins": [
+                "plugins/markdown",
+                "jsdoc-mermaid",
+                "node_modules/better-docs/category"
+            ],
+            "opts": {
+                "encoding": "utf8",
+                "destination": "docs/",
+                "readme": "README.md",
+                "recurse": true,
+                "verbose": true,
+                "template": "node_modules/better-docs"
+            },
+            "templates": {
+                "cleverLinks": false,
+                "monospaceLinks": false,
+                "search": true,
+                "default": {
+                    "staticFiles": {
+                      "include": [
+                      ]
+                    }
+                },
+                "better-docs": {
+                    "name": "Backend Code Documentation",
+                    
+                    "title": "Backend Code Documentation",
+                    "trackingCode": "tracking-code-which-will-go-to-the-HEAD",
+                "hideGenerator": false
+                }
+            }
+        }
+                   
+        
+        
+        
+        
+        
+        
