@@ -9,7 +9,7 @@ const {userController}=require("./user.controller");
 const userRoute=Router();
 
 userRoute.get('/getusers',Authorization,userController.getAll);
-userRoute.get('/me',Authorization,userController.getMyData);
+userRoute.get('/:id',Authorization,userController.getMyData);
 userRoute.post('/register',userController.register);
 userRoute.post('/login',userController.login);
 
