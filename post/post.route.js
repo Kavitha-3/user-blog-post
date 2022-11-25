@@ -13,6 +13,7 @@ PostRoute.get("/user/:id",PostController.getUserPost);
 PostRoute.get("/getallpost",PostController.getMany);
 PostRoute.get("/getpost/:id",PostController.getOne);
 PostRoute.delete("/delete/:id",Authorization,PostController.deleteOne);
+PostRoute.post("/updatepost/:id",Authorization,PostController.updatePost);
 
 module.exports={
     PostRoute
