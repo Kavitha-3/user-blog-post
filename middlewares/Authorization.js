@@ -13,7 +13,7 @@ const Authorization=async(req,res,next)=>{
     try {
         let auth=req.headers.authorization;
     
-        const verify=jwt.verify(arr[1],process.env.APP_SECRET);
+        const verify=jwt.verify(auth,process.env.APP_SECRET);
 
         let id=verify.sessionId;
         let dbuser=await UserService.getOneUser({_id:id})
