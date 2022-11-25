@@ -65,8 +65,10 @@ const PostController={
   async getMany(req,res,next){
       try {
           const data=await PostService.getMany({});
+          const postCount =data.length;
           res.status(200).json({
-              code:200
+              code:200,
+              postCount:postCount
               data:data,
               message:'Post list retrieved successfully'
           })
@@ -101,7 +103,7 @@ async deleteOne(req,res,next){
         const id=req.params.id;
         const data=await PostService.delete(id);
         res.status(200).json({
-            dara:data,code:200,
+            data:data,code:200,
             message:'Post deleted successfully'
         })
     } catch (error) {
