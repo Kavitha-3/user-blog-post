@@ -12,14 +12,7 @@ const { UserService } = require("../users/user.service");
 const Authorization=async(req,res,next)=>{
     try {
         let auth=req.headers.authorization;
-        let arr=String(auth).split(" ");
-        if(arr.length !=2) {
-            throw "token invalid"
-        }
-        if(arr[0]!=="Barear"){
-
-            throw "token not valid"
-        }
+    
         const verify=jwt.verify(arr[1],process.env.APP_SECRET);
 
         let id=verify.sessionId;
@@ -35,7 +28,8 @@ const Authorization=async(req,res,next)=>{
         next()
     } catch (error) {
         console.log(error);
-        res.status(500).json({
+        res.status(40
+0).json({
             error:{
                 message:error
                 
