@@ -8,11 +8,11 @@ const {PostController}=require("./post.controller");
  */
 const PostRoute=Router();
 
-PostRoute.post("/",Authorization,PostController.create);
+PostRoute.post("/createpost",Authorization,PostController.create);
 PostRoute.get("/user/:id",PostController.getUserPost);
-PostRoute.get("/",PostController.getMany);
-PostRoute.get("/:id",PostController.getOne);
-PostRoute.delete("/:id",Authorization,PostController.deleteOne);
+PostRoute.get("/getallpost",PostController.getMany);
+PostRoute.get("/getpost/:id",PostController.getOne);
+PostRoute.delete("/delete/:id",Authorization,PostController.deleteOne);
 
 module.exports={
     PostRoute
