@@ -18,7 +18,7 @@ const PostService={
     },
     async update(id,data){
         return PostModel.updateOne(
-            {_id:id},{$set:data}
+            {_id:id},{$set:data},{new:true}
         )
     },
     async getOne(id){
