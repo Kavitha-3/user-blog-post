@@ -32,13 +32,14 @@ const userController={
             }
             const response=UserService.createUser(body)
             res.status(201).json({
-                data:response
+                code:201,data:response,
+                message:'User created successfully '
             });
             return
         } catch (error) {
             console.log(error)
-            res.status(500).json({
-                message:error
+            res.status(400).json({
+                code:400,message:'User creation failure'
             })
         }
     },
@@ -59,12 +60,12 @@ const userController={
 
             const token=jwt.sign({sessionId:dbuser._id},process.env.APP_SECRET,{expiresIn:'12h'});
             res.status(200).json({
-                token:token
+                code:200,data:dbuser,message:'User login successfully',token:token
             })
         } catch (error) {
             console.log(error);
-            res.status(500).json({
-               
+            res.status(400).json({
+               code:400,
                error:{ message:error}
             })
             
@@ -80,12 +81,12 @@ const userController={
             console.log("get all user controller",req.user);
             const data=await UserService.getAllUser();
             res.status(200).json({
-                users:data
+                code:200,data:data,message:'User data retrieved successfully'
             })
         } catch (error) {
-            res.status(500).json({
-                error:{
-                    message:error
+            res.status(400).json({
+                code:400,error:{
+                    message:'Error in retrieving user list'
                 }
             })
             
@@ -95,17 +96,17 @@ const userController={
        /**
         * this is to get only my data
         */
-            let id=req.user._id;
+            let id=req.params.id;
             UserService.getOneUser({
                 _id:id
             }).then(data=>{
                 res.status(200).json({
-                    data
+                    code:200,data=data,message:'User data retrieved successfully'
                 })
             }).catch(error=>{
-                res.status(500).json({
-                    error:{
-                        message:error
+                res.status(400).json({
+                    code:400,error:{
+                        message:'Error in retrieving user data'
                     }
                 })
             })
