@@ -28,7 +28,7 @@ const PostController={
             
         }
     },
-    async update(req,res,next){
+    async updatePost(req,res,next){
         try {
             let postId=req.params.id;
             let body=req.body;
