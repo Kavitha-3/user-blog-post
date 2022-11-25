@@ -17,12 +17,14 @@ const PostController={
             let author=req.user._id;
             const data=await PostService.create(title,body,author);
             res.status(201).json({
-                data:"Post created"
+                code:201,
+                message:"Post created",
+                data:data
             })
         } catch (error) {
-            res.status(500).json({
+            res.status(400).json({
                 error:{
-                    message:error
+                    code:400,message:error
                 }
             })
             
@@ -34,12 +36,13 @@ const PostController={
             let body=req.body;
             const data=await PostService.update(postId,body);
             res.status(200).json({
-                data
+                code:200,data:data,
+                 message:"Blog updated successfully"
             })
         } catch (error) {
-            res.status(500).json({
+            res.status(400).json({
                 error:{
-                    message:error
+                    code:400,message:error
                 }
             })
         }
@@ -49,12 +52,12 @@ const PostController={
          let postId=req.params.id;
          const data=await PostService.getOne(postId);
          res.status(200).json({
-             post:data
+             code:200,data:data
          })
      } catch (error) {
-         res.status(500).json({
+         res.status(400).json({
              error:{
-                 message:error
+                 code:400,message:error
              }
          })
      }
@@ -63,12 +66,14 @@ const PostController={
       try {
           const data=await PostService.getMany({});
           res.status(200).json({
-              posts:data
+              code:200
+              data:data,
+              message:'Post list retrieved successfully'
           })
       } catch (error) {
-          res.status(500).json({
+          res.status(400).json({
               error:{
-                  message:error
+                  code:400,message:error
               }
           })
       }
@@ -79,12 +84,14 @@ const PostController={
           console.log(userId);
           const data=await PostService.getMany({author:userId});
           res.status(200).json({
-              posts:data
+              code:200,
+              data:data,
+              message:'Post list retrieved successfully'
           })
       } catch (error) {
-          res.status(500).json({
+          res.status(400).json({
               error:{
-                  message:error
+                  code:400,message:error
               }
           })
       }
@@ -94,13 +101,14 @@ async deleteOne(req,res,next){
         const id=req.params.id;
         const data=await PostService.delete(id);
         res.status(200).json({
-            data
+            dara:data,code:200,
+            message:'Post deleted successfully'
         })
     } catch (error) {
-        res.status(500).json({
+        res.status(400).json({
             error:
             {
-                message:error
+                code:400,message:error
             }
         })
     }
