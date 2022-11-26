@@ -16,8 +16,8 @@ const PostController={
             let {title,body}=req.body;
             let author=req.user._id;
             const data=await PostService.create(title,body,author);
-            res.status(201).json({
-                code:201,
+            res.status(200).json({
+                code:200,
                 message:"Post created",
                 data:data
             })
