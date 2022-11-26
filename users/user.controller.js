@@ -31,8 +31,8 @@ const userController={
                 throw new Error("user with same email already exists")
             }
             const response=UserService.createUser(body)
-            res.status(201).json({
-                code:201,data:response,
+            res.status(200).json({
+                code:200,data:response,
                 message:'User created successfully '
             });
             return
